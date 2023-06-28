@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{%load static%}
+
+{% block title %} Home {% endblock title %}
+
+{% block contenido %}
+{% comment %} {% if user.is_authenticated %}
+<h1 class="text-center h1-h"> Bienvenido! {{ user.username }}</h1>
+
+{% else %}
+<h1 class="text-center h1-h"> Hola extraño! </h1>
+<p class= "text-center"> Aún no te has <a  href='registro'>registrado<a>, pero mientras tanto, disfruta de estas imágenes. </p>
+
+<div class="c-b">
+        <input type="radio" name="position" checked />
+        <input type="radio" name="position" />
+        <input type="radio" name="position" />
+        <input type="radio" name="position" />
+        <input type="radio" name="position" />
+        <main id="carousel">
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+        </main>
+</div> {% endcomment %}
+<div class="row">
+        <div class="col l2"></div>
+      
+        <div class="col s12 m6 l8">
+          <form action="/" method="POST">
+            {% csrf_token %} {{form.titulo}}
+            <input type="submit" class="btn" name="Crear Tarea" />
+          </form>
+      
+          {% for tarea in tareas %}
+          <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+              {% if tarea.completado == True %}
+              <strike class="card-title">{{tarea.titulo}}</strike>
+      
+              {% else %}
+              <span class="card-title">{{tarea.titulo}}</span>
+      
+              {% endif %}
+            </div>
+            <div class="card-action">
+              <a href="{% url 'editar_tarea' tarea.id %}">Editar</a>
+              <a href="{% url 'eliminar_tarea' tarea.id %}">Borrar</a>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      
+        <div class="col l2"></div>
+      </div>
+
+
+{% endblock  %}
+
