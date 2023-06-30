@@ -395,4 +395,30 @@ form .userexam {
     background-color: #45a049;
 }
 
-/* Codigo addtask*/
+/* Codigo tabletask*/
+
+.c-tabletask {
+    margin: 5px;
+    margin-bottom: 10px;
+    padding: auto;
+    font-size: 0.9em;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+
+}
+
+.c-tabletask-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px;
+    padding: auto;
+
+}
+
+.c-tabletask-header p {
+    font-size: 20px;
+    font-weight: bold;
+
+}

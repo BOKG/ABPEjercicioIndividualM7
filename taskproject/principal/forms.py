@@ -1,7 +1,8 @@
 from django.contrib.auth.models import User
 from django import forms
 from django.forms import ModelForm
-from .models import Task
+from .models import Task, Label
+from datetime import datetime, timedelta
 
 
 class UsuarioForm(forms.ModelForm):
@@ -19,7 +20,47 @@ class UsuarioForm(forms.ModelForm):
 
 
 class TaskForm(forms.ModelForm):
-    due_date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
+    due_date = forms.DateField(
+        widget=forms.DateInput(attrs={'type': 'date'}),
+        initial=datetime.now() + timedelta(days=30)
+    )
+    title = forms.CharField(
+        widget=forms.TextInput(attrs={'class': 'form-control'})
+    )
+    description = forms.CharField(
+        widget=forms.Textarea(attrs={'class': 'form-control'})
+    )
+    status = forms.ChoiceField(
+        choices=Task.STATUS_CHOICES,
+        widget=forms.Select(attrs={'class': 'form-control'})
+    )
+
+    class Meta:
+        model = Task
+        fields = ['title', 'description', 'due_date', 'status', 'label']
+
+    def save(self, commit=True):
+        task = super().save(commit=False)
+        if commit:
+            task.save()
+        return task
+
+
+class EditTaskForm(forms.ModelForm):
+    due_date = forms.DateField(
+        widget=forms.DateInput(attrs={'type': 'date'}),
+        initial=datetime.now() + timedelta(days=30)
+    )
+    title = forms.CharField(
+        widget=forms.TextInput(attrs={'class': 'form-control'})
+    )
+    description = forms.CharField(
+        widget=forms.Textarea(attrs={'class': 'form-control'})
+    )
+    status = forms.ChoiceField(
+        choices=Task.STATUS_CHOICES,
+        widget=forms.Select(attrs={'class': 'form-control'})
+    )
 
     class Meta:
         model = Task

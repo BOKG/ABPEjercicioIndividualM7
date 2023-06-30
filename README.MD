@@ -1,31 +1,23 @@
 
+- Desde la administración de Django, agrega registros para las Etiquetas que sean estrictamente
+necesarias de acuerdo a la historia del proyecto. OK
 
-# Requisitos
+- Genera una vista que listen todas las tareas pendientes del usuario actual, por ahora sin filtrar,
+ordenadas por fecha de vencimiento. OK
 
-1. Permitir la autenticación y autorización de usuarios. OK
+En la parte superior, considera un botón “Agregar Tarea” con la que se accederá a la ventana de Creación.  OK
 
-2. Implementar la funcionalidad para que los usuarios autenticados puedan agregar tareas pendientes. 
+Cada tarea tendrá sólo un botón de Ver, que navegará hasta la vista de Visualización de Tarea. OK
 
-3. Cada tarea debe contener los siguientes atributos:
-título, descripción, fecha de vencimiento, estado (pendiente, en progreso o completada) y etiqueta para categorizar la tarea.
+-Generar una vista de Visualización de Tarea en donde se presenten todos los datos relacionados
+con la tarea seleccionada. OK
+En la parte superior y mediante botones, poner las acciones que están disponibles: Editar la tarea, derivando a la vista de Edición de Tareas; OK
+Eliminar, que eliminará el registro de Tarea (previa confirmación de parte del usuario); OK 
+Completar, que cambiará el estado de la tarea; OK
+Retornar, que volverá a la vista de Listado.   OK
 
-4. Crear la página principal de la aplicación que muestre una lista de todas
-las tareas pendientes del usuario, ordenadas por fecha de vencimiento.
+La vista de Visualización no debe, por ahora, cargar datos.
 
-5. Implementar la capacidad de filtrar las tareas por etiqueta y estado.
-
-6. Permitir a los usuarios crear nuevas tareas, especificando una etiqueta de una lista predefinida.
-
-7. Permitir a los usuarios editar y eliminar tareas existentes desde la página principal.
-
-8. Implementar una página de detalles de tarea que muestre toda la información de la tarea y un botón para marcarla como completada.
-
-9. Al marcar una tarea como completada, moverla a una lista separada de tareas completadas.
-
-10. Mostrar a los usuarios estadísticas sobre el estado de sus tareas, como la cantidad de tareas pendientes, completadas, en progreso y vencidas.
-
-11. Utilizar el ORM de Django para interactuar con la base de datos.
-
-12. Utilizar el modelo de usuario integrado en Django para autenticar a los usuarios y asociar las tareas con el usuario correspondiente.
-
-13. Recuerda que implementar estas tareas requerirá conocimientos de programación y el uso de un framework como Django.
+La vista Listado de todas las tareas pendientes, deberá mostrar los datos que se encuentren registrados
+en la base de datos. Si no tuviera datos la tabla correspondiente, podrás agregar directamente en la base
+de datos para ver reflejada la lista de tareas. 
